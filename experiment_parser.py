@@ -54,5 +54,4 @@ with open(outpath, 'w',newline='') as filein:
     for row in YIELD:
         writer.writerow([row])
 
-print(f"Wrote results{runid}.csv to --outdir=", outdir)
 #-----------------------------------------------------
