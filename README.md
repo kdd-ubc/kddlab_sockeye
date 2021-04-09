@@ -113,6 +113,8 @@ Pretty much the same thing except:
 ################################################################################
  
 # load your modules
+module load gcc
+module load cuda
 module load python3
 
 cd /arc/project/ex-kdd-1/yourname/
@@ -152,6 +154,21 @@ Guides, more specific documentationt:https://confluence.it.ubc.ca/#all-updates
 - Don't forget to ```module load``` your package managers.
 - ```pip install``` is best done as ```--user``` such that there are no permissions conflicts. (Better yet, create a ```venv``` in advance and outside of the job script)
 - Make sure no used software logs or caches things outside of ```scratch```. (Matplotlib, cupy ex.)
+
+__________
+
+
+## Useful for larger/more granular jobs:
+
+- GNU-parallel
+
+
+
+
+
+
+
+
 
 
 
