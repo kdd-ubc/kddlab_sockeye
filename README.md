@@ -161,7 +161,72 @@ __________
 
 ## Useful for larger/more granular jobs:
 
-- GNU-parallel
+[ GNU-parallel ](https://www.gnu.org/software/parallel/parallel_tutorial.html) is a useful utility if you are requesting multiple cores and there is obvious quick/dirty parallelization to take advantage of. It takes care of allocating sequential processes to the number of workers(cores) available to you without any configuration.
+
+Another feauture that makes it useful is it's argument-passing interface. Sequences of arguments provided to parallel's template string ( ```{1} {2} etc.```)  (separated by ```:::```) are passed to the inner program that parallel wraps as cartesian products. Ex.:
+
+```bash
+$ parallel 'echo {1} {2} {3}' ::: x ::: y z ::: 1 2 3
+
+x y 1
+x y 2
+x y 3
+x z 1
+x z 2
+x z 3
+```
+This makes it quite convenient if you need to explore a space of multiple parameters. Likewise, if you are requesting a node with 10 cpus to run a 100 iterations of a script, delegating threading to ```parallel``` should make it 10 times faster (give or take).
+
+```bash
+#PBS -l walltime=1:00:00,select=1:ncpus=10:mem=32gb
+#...
+
+module load parallel
+
+#...
+
+parallel 'python3 experiment.py --save /disney/land/results --parameter {1} --iteration_id {2}' ::: linear quadratic cubic ::: $(seq 1 100)
+
+```
+---------------------
+
+
+## PBS Array Jobs
+
+
+
+For large series of jobs with very similar submission parameters it is highly recommended to make use of PBS array jobs. In this case a single job script can launch many jobs and change the execution parameters, such as input files, based on the array index within the job.
+
+
+|||
+|:---:|:---:|
+|**#PBS -J 10-100:10**|	This flag identifies the job as an array job and sets the indexes to be used for the sub jobs. 0-99 in this case gives a range of 0 to 99 for subjob indexes. This range can be any set of positive values to identify the indexes. Following the range there is an optional parameter that can be provided to identify the increment step between each job index. In this case we use 3 so the job indexes will be : 0, 3, 6, 9, 12,...,99. If no increment parameter is provided the increment defaults to 1.|
+|^array_index^|	During job submission time the PBS_ARRAY_INDEX environmental variable is not yet initialized. If you need to define the job array index during submission time the macro ^array_index^ can be used and will be replaced on job submission by the array ID. This is particularly useful if you wish to use PBS to control the standard output and error with the -o and -e flags and would like each subjob in the array to write to its own file.|
+|**PBS_ARRAY_INDEX**	|During job execution this environment variable will contain the job array index number specific to the subjob. This can be used to map the job execution commands and parameters to the unique components for each sub job.|
+  
+Array job example script:
+
+```bash
+#!/bin/bash
+#PBS -l walltime=3:00:00,select=1:ncpus=4:mem=16gb
+#PBS -J 0-100:10
+#PBS -N job_name
+#PBS -A alloc-code
+#PBS -o output_^array_index^.txt
+#PBS -e error_^array_index^.txt
+ 
+################################################################################
+ 
+module load thisorthat
+module load python3
+
+#utilizing array job
+python3 experiment.py --save /disney/land/results --parameter qubic --iteration_id $PBS_ARRAY_INDEX
+
+#this can also be combined with gnu-parallel to split a long-parallel job into an array of smaller jobs that still utilize multiple gpus
+parallel 'python3 experiment.py --save /disney/land/results --parameter {1} --iteration_id {2}' ::: linear quadratic cubic ::: $(seq $PBS_ARRAY_INDEX $(( $PBS_ARRAY_INDEX +10)))
+
+```
 
 
 
