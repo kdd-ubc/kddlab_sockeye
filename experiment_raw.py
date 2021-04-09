@@ -25,5 +25,6 @@ with open('results.csv', 'w',newline='') as filein:
     writer = csv.writer(filein)
     for row in YIELD:
         writer.writerow([row])
+print("Wrote to ./results.csv")
 
 #-----------------------------------------------------

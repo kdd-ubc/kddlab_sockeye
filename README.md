@@ -68,13 +68,13 @@ In particular, line **#PBS -l walltime=1:00:00,select=1:ncpus=1:mem=2gb** says t
 ```bash
 #!/bin/bash
  
-#PBS -l walltime=:00:00,select=1:ncpus=1:mem=2gb              <-----see above
+#PBS -l walltime=1:00:00,select=1:ncpus=1:mem=2gb             <-----see above
 #PBS -N thursday_demo                                         <-----the name with which the job will show up in the queue
 #PBS -A ex-kdd-1                                              <-----This is our "allocation code". You have to tag on a "-gpu" for gpu jobs: 'ex-kdd-1-gpu
 #PBS -m abe                                                   <-----modes of logging
 #PBS -M your.name@ubc.ca                                      <-----specify the email via which PBS will inform you about completion/failure of this job
-#PBS -o /scratch/ex-kdd-1/yourname/demo_results/output.txt
-#PBS -e /scratch/ex-kdd-1/yourname/demo_results/error.txt
+#PBS -o /scratch/ex-kdd-1/yourname/someresultsfolder/output.txt
+#PBS -e /scratch/ex-kdd-1/yourname/someresultsfolder/error.txt
  
 ################################################################################
  
@@ -87,6 +87,38 @@ cd /arc/project/ex-kdd-1/yourname/
 #run your code here
 
  
+```
+
+
+### GPU Job
+
+
+Pretty much the same thing except:
+
+  - have to tag the *-gpu* to the allocation code
+  - request the actual resource (*gpus=20*)
+  - ```module load``` ```cuda```
+
+```bash
+#!/bin/bash
+ 
+#PBS -l walltime=1:00:00,select=1:ncpus=1:mem=2gb:gpus=20
+#PBS -N demo_gpu
+#PBS -A ex-kdd-1-gpu
+#PBS -m abe
+#PBS -M rtkushner@alumni.ubc.ca
+#PBS -o /scratch/ex-kdd-1/rt/kddlab_sockeye/output.txt
+#PBS -e /scratch/ex-kdd-1/rt/kddlab_sockeye/error.txt
+ 
+################################################################################
+ 
+# load your modules
+module load python3
+
+cd /arc/project/ex-kdd-1/yourname/
+#consume your envs, activate environments
+
+#run your code here
 ```
 
 ## 4.Submit your job, monitor its status; kill an erroneous submission.
@@ -120,4 +152,6 @@ Guides, more specific documentationt:https://confluence.it.ubc.ca/#all-updates
 - Don't forget to ```module load``` your package managers.
 - ```pip install``` is best done as ```--user``` such that there are no permissions conflicts. (Better yet, create a ```venv``` in advance and outside of the job script)
 - Make sure no used software logs or caches things outside of ```scratch```. (Matplotlib, cupy ex.)
+
+
 

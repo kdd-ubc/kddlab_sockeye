@@ -23,18 +23,20 @@ def dir_path(string):
 parser = argparse.ArgumentParser(description='Simulation presets')
 parser.add_argument('--outdir', type=dir_path, help="""Specify the path to write the results of the simulation.""")
 parser.add_argument("-it", "--itern", type=int, help="The number of iterations")
+parser.add_argument("-i", "--myid", type=int, help="The number of iterations")
 
 args     =  parser.parse_args()
 itern    =  int(args.itern)
 outdir   =  args.outdir
+runid    =  int(args.myid)
 
 #Organize directories for output data if needed
 if outdir is not None:
-    outpath = os.path.join(outdir,'my_data_folder',f'results.csv')
+    outpath = os.path.join(outdir,'my_data_folder',f'results{runid}.csv')
     for folder in ['my_data_folder', 'my_log_files']:
         os.makedirs(os.path.join(outdir,folder), exist_ok=True)
 else:
-    outpath = f'results.csv'
+    outpath = f'results{runid}.csv'
 
 
 #-----------------------------------------------------
