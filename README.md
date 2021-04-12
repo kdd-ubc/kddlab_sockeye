@@ -131,13 +131,13 @@ Submit your scrip via :```qsub myjob.sh ```
 
 See its status in the queue :```qstat ``` or ```qstat | grep <yourcwl>```
 
-If mistaken is made or job unwanted :```qdel <jobid:12332144.pbsha ```
+If mistaken is made or job unwanted :```qdel <jobid:12332144.pbsha> ```
 
 ## 5.Export results out of Sockeye
 
 
 ```
-scp -r   mycwl@sockeye.arc.ubc.ca:/project/ex-kdd-1/myuserfolder/myexperimentalresults user@youmachine:~/myexperimentalresults
+scp -r   mycwl@sockeye.arc.ubc.ca:/scratch/ex-kdd-1/myuserfolder/myexperimentalresults user@youmachine:~/myexperimentalresults
 ```
 
 
