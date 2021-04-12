@@ -2,7 +2,7 @@
 
 # Preliminaries
 
-- Contacte Sockeye Admin to get access to your supervisor's allocation. (Ours is ex-kdd-1)
+- Contact Sockeye Admin to get access to your supervisor's allocation. (Ours is ex-kdd-1)
 - Most likely will have to [ install a VPN ](https://it.ubc.ca/services/email-voice-internet/myvpn) if working off campus. 
 https://it.ubc.ca/services/email-voice-internet/myvpn
 
