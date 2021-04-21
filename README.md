@@ -2,16 +2,14 @@
 
 # Preliminaries
 
-- Contact Sockeye Admin to get access to your supervisor's allocation. (Ours is ex-kdd-1)
-- Most likely will have to [ install a VPN ](https://it.ubc.ca/services/email-voice-internet/myvpn) if working off campus. 
-https://it.ubc.ca/services/email-voice-internet/myvpn
+- NECESSARY: Contact Sockeye Admin to get access to your supervisor's allocation. (Ours is ex-kdd-1)
+- If you are outside of campus (i.e. not connect tot the __ubc-secure__ wifi network), you likely will have to [ install a VPN ](https://it.ubc.ca/services/email-voice-internet/myvpn).
+They have [ an option for Windows ](https://it.ubc.ca/services/email-voice-internet/myvpn/myvpn-setup-windows) as well.
 
+- you can then log into sockeye via ```ssh <yourcwl>@sockeye.arc.ubc.ca``` (You campus-wide login :: cwl is a login string granted to you by UBC when you were creating your account. You can find it easily in the Studen Service Centre for example)
 
-- you can log into sockeye via ```ssh <yourcwl>@sockeye.arc.ubc.ca```
+- once you are in, please create a folder with your name in __SCRATCH__ and __PROJECT__ and work from there. More on these two folders late. :)
 
-- once you are in, please create a folder with your name in SCRATCH and PROJECT and work from there. :)
-
-- a note on the directory structure:
 ```
 /
 ├─ /home/<cwl>
