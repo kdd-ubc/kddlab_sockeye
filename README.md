@@ -9,16 +9,20 @@ They have [ an option for Windows ](https://it.ubc.ca/services/email-voice-inter
 - you can then log into sockeye via ```ssh <yourcwl>@sockeye.arc.ubc.ca``` (You campus-wide login :: cwl is a login string granted to you by UBC when you were creating your account. You can find it easily in the Studen Service Centre for example)
 
 - once you are in, please create a folder with your name in __SCRATCH__ and __PROJECT__ and work from there. More on these two folders late. :)
-
 ```
+This is supposed to represent Sockeye's  filesystem available to the user(us).
+Forward slash is the root directory from which you can navigate everywhere else:
+
 /
 ├─ /home/<cwl>
-├─ arc/project/ex-kdd1/     <--------  Queue jobs from PROJECT
+|
+├─ /arc/project/ex-kdd1/     <--------  Queue jobs from PROJECT
 │  ├─ .../
-│  ├─ <cwl>/demo/demo.job.sh
-├─ /scratch/ex-kdd-1/       <--------  Write output files to SCRATCH
+│  ├─ <YourFolder>/yourfiles.so
+|
+├─ /scratch/ex-kdd-1/        <--------  Direct your programs to write output files to SCRATCH
 │  ├─ .../
-│  ├─ <cwl>/demo_results/results.csv
+│  ├─ <YourFolder>/demo_results/results.csv
 
 ```
 
@@ -30,11 +34,11 @@ They have [ an option for Windows ](https://it.ubc.ca/services/email-voice-inter
 ## 1.Transport input data & code to sockeye.
 
 ```
-rsync -zpr  myexperimentfiles mycwl@sockeye.arc.ubc.ca:/project/ex-kdd-1/myuserfolder/
+rsync -zpr  myexperimentfiles mycwl@sockeye.arc.ubc.ca:/arc/project/ex-kdd-1/myuserfolder/
 ```
 or 
 ```
-scp -r  myexperimentfiles mycwl@sockeye.arc.ubc.ca:/project/ex-kdd-1/myuserfolder/
+scp -r  myexperimentfiles mycwl@sockeye.arc.ubc.ca:/arc/project/ex-kdd-1/myuserfolder/
 ```
 
 ## 2.Set up your experiment's environment
@@ -45,9 +49,6 @@ Could imply many things, but in general:
   - create a virutal environment in the case of python. (In PROJECT)
   - create an incipient folder structure in output (In SCRATCH)
   
-
-## 3.Create a job script.
-
 Most things require loading software packages from ARC's directories prior to any work being done. Only ```gcc``` is loaded by defalt.
 
 You can inspect available and and load the needed modules via:
@@ -56,12 +57,31 @@ You can inspect available and and load the needed modules via:
 
 ```module load <module name>```
 
+
+![ image ](./Screenshot%20from%202021-04-22%2011-54-30.png)
+
 It pays to be mindful of versioning. 
+
+_______
+
+Ex. to set up a python virtual environment, for example, you would have to load ```python3``` and some virtual environment manager, say  ```py-virtualenv/16.4.1-py3.7.3```:
+```
+$ module load python3 py-virtualenv/16.4.1-py3.7.3 
+$ python3 -m virtualenv myenv
+$ source myenv/bin/activate
+(myenv)$ echo "Good to go!"
+```
+
+
+## 3.Create a job script.
+
 
 
 A good overview of a PBS script is given [ here ](https://confluence.it.ubc.ca/display/UARC/Running+Jobs). 
 
-In particular, line **#PBS -l walltime=1:00:00,select=1:ncpus=1:mem=2gb** says that you are requesting **1 node**(select=1) with **1cpu**(ncpus=1) and **2gb of memory**(mem=2gb) and are expecting it to run for roughly **1 hour**(walltime=1:00:00,eyeballing this usually; 72 hours is the limit).
+In particular, line **#PBS -l walltime=1:00:00,select=1:ncpus=1:mem=2gb** 
+ 
+says that you are requesting **1 node**(select=1) with **1cpu**(ncpus=1) and **2gb of memory**(mem=2gb) and are expecting it to run for roughly **1 hour**(walltime=1:00:00,eyeballing this usually; 72 hours is the limit).
 
 ```bash
 #!/bin/bash
