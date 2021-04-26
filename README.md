@@ -1,4 +1,4 @@
-**Available resources**: https://confluence.it.ubc.ca/display/UARC/About+Sockeye
+**Node types/priority heuristics**: https://confluence.it.ubc.ca/display/UARC/About+Sockeye
 
 # Preliminaries
 
