@@ -4,12 +4,13 @@
 
 - NECESSARY: [Contact Sockeye Admin here](mailto:arc.support@ubc.ca),CC Khanh in the email to get access to the allocation. (Ours is ex-kdd-1)
  i.e. 
-    Hi, My name is X and my CWL is <thus>.
+ 
+    **Hi, My name is X and my CWL is <thus>.
 
     I'm a researcher at Khanh Dao-Duc's(kdd@math.ubc) lab and require access to computational resources for my experiments. Is there any chance my account could be added to Khanh's group on Sockeye? Our allocation's code is <ex-kdd-1>. 
 
     Best,
-    X
+    X**
     
   
 
