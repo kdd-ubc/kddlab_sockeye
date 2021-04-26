@@ -2,7 +2,17 @@
 
 # Preliminaries
 
-- NECESSARY: [Contact Sockeye Admin](mailto:arc.support@ubc.ca) to get access to your supervisor's allocation. (Ours is ex-kdd-1)
+- NECESSARY: [Contact Sockeye Admin here](mailto:arc.support@ubc.ca),CC Khanh in the email to get access to the allocation. (Ours is ex-kdd-1)
+ i.e. 
+    Hi, My name is X and my CWL is <thus>.
+
+    I'm a researcher at Khanh Dao-Duc's(kdd@math.ubc) lab and require access to computational resources for my experiments. Is there any chance my account could be added to Khanh's group on Sockeye? Our allocation's code is <ex-kdd-1>. 
+
+    Best,
+    X
+    
+  
+
 - If you are outside of campus (i.e. not connect tot the __ubc-secure__ wifi network), you likely will have to [ install a VPN ](https://it.ubc.ca/services/email-voice-internet/myvpn).
 They have [ an option for Windows ](https://it.ubc.ca/services/email-voice-internet/myvpn/myvpn-setup-windows) as well.
 
@@ -23,7 +33,6 @@ Forward slash is the root directory from which you can navigate everywhere else:
 ├─ /scratch/ex-kdd-1/        <--------  Direct your programs to write output files to SCRATCH
 │  ├─ .../
 │  ├─ <YourFolder>/demo_results/results.csv
-
 ```
 
 
