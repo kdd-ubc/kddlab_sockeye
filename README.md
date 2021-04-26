@@ -2,7 +2,7 @@
 
 # Preliminaries
 
-- NECESSARY: Contact Sockeye Admin to get access to your supervisor's allocation. (Ours is ex-kdd-1)
+- NECESSARY: [Contact Sockeye Admin](mailto:arc.support@ubc.ca) to get access to your supervisor's allocation. (Ours is ex-kdd-1)
 - If you are outside of campus (i.e. not connect tot the __ubc-secure__ wifi network), you likely will have to [ install a VPN ](https://it.ubc.ca/services/email-voice-internet/myvpn).
 They have [ an option for Windows ](https://it.ubc.ca/services/email-voice-internet/myvpn/myvpn-setup-windows) as well.
 
