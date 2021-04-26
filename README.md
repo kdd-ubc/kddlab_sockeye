@@ -1,4 +1,4 @@
-
+**Available resources**: https://confluence.it.ubc.ca/display/UARC/About+Sockeye
 
 # Preliminaries
 
@@ -245,7 +245,6 @@ python3 experiment.py --save /disney/land/results --parameter qubic --iteration_
 parallel 'python3 experiment.py --save /disney/land/results --parameter {1} --iteration_id {2}' ::: linear quadratic cubic ::: $(seq $PBS_ARRAY_INDEX $(( $PBS_ARRAY_INDEX +10)))
 
 ```
-
 
 
 
