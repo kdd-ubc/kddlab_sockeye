@@ -256,6 +256,17 @@ parallel 'python3 experiment.py --save /disney/land/results --parameter {1} --it
 
 ```
 
+_____
+
+# Jupyter Notebooks
+
+Consult [this doc](https://confluence.it.ubc.ca/display/UARC/Jupyter+Notebooks+with+Singularity) for running jupyter notebook interactively on a sockeye node. 
+
+
+--https://confluence.it.ubc.ca/display/UARC/Jupyter+Notebooks+with+Singularity--
+
+
+
 
 
 
