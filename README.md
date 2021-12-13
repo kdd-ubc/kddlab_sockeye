@@ -2,12 +2,12 @@
 
 # Preliminaries
 
-- NECESSARY: [Contact Sockeye Admin here](mailto:arc.support@ubc.ca),CC Khanh in the email to get access to the allocation. (Ours is ex-kdd-1)
+- NECESSARY: [Contact Sockeye Admin here](mailto:arc.support@ubc.ca),CC Khanh in the email to get access to the allocation. (Ours is pr-kdd-1)
  i.e. 
  
     **Hi, My name is X and my CWL is thus.
 
-    I'm a researcher at Khanh Dao-Duc's(kdd@math.ubc) lab and require access to computational resources for my experiments. Is there any chance my account could be added to Khanh's group on Sockeye? Our allocation's code is <ex-kdd-1>. 
+    I'm a researcher at Khanh Dao-Duc's(kdd@math.ubc) lab and require access to computational resources for my experiments. Is there any chance my account could be added to Khanh's group on Sockeye? Our allocation's code is <pr-kdd-1>. 
 
     Best,
     X**
@@ -27,11 +27,11 @@ Forward slash is the root directory from which you can navigate everywhere else:
 /
 ├─ /home/<cwl>
 |
-├─ /arc/project/ex-kdd1/     <--------  Queue jobs from PROJECT
+├─ /arc/project/pr-kdd-1/     <--------  Queue jobs from PROJECT
 │  ├─ .../
 │  ├─ <YourFolder>/yourfiles.so
 |
-├─ /scratch/ex-kdd-1/        <--------  Direct your programs to write output files to SCRATCH
+├─ /scratch/pr-kdd-1/        <--------  Direct your programs to write output files to SCRATCH
 │  ├─ .../
 │  ├─ <YourFolder>/demo_results/results.csv
 ```
@@ -44,11 +44,11 @@ Forward slash is the root directory from which you can navigate everywhere else:
 ## 1.Transport input data & code to sockeye.
 
 ```
-rsync -zpr  myexperimentfiles mycwl@sockeye.arc.ubc.ca:/arc/project/ex-kdd-1/myuserfolder/
+rsync -zpr  myexperimentfiles mycwl@sockeye.arc.ubc.ca:/arc/project/pr-kdd-1/myuserfolder/
 ```
 or 
 ```
-scp -r  myexperimentfiles mycwl@sockeye.arc.ubc.ca:/arc/project/ex-kdd-1/myuserfolder/
+scp -r  myexperimentfiles mycwl@sockeye.arc.ubc.ca:/arc/project/pr-kdd-1/myuserfolder/
 ```
 
 ## 2.Set up your experiment's environment
@@ -98,18 +98,18 @@ says that you are requesting **1 node**(select=1) with **1cpu**(ncpus=1) and **2
  
 #PBS -l walltime=1:00:00,select=1:ncpus=1:mem=2gb             <-----see above
 #PBS -N thursday_demo                                         <-----the name with which the job will show up in the queue
-#PBS -A ex-kdd-1                                              <-----This is our "allocation code". You have to tag on a "-gpu" for gpu jobs: 'ex-kdd-1-gpu
+#PBS -A pr-kdd-1                                              <-----This is our "allocation code". You have to tag on a "-gpu" for gpu jobs: 'ex-kdd-1-gpu
 #PBS -m abe                                                   <-----modes of logging
 #PBS -M your.name@ubc.ca                                      <-----specify the email via which PBS will inform you about completion/failure of this job
-#PBS -o /scratch/ex-kdd-1/yourname/someresultsfolder/output.txt
-#PBS -e /scratch/ex-kdd-1/yourname/someresultsfolder/error.txt
+#PBS -o /scratch/pr-kdd-1/yourname/someresultsfolder/output.txt
+#PBS -e /scratch/pr-kdd-1/yourname/someresultsfolder/error.txt
  
 ################################################################################
  
 # load your modules
 module load python3
 
-cd /arc/project/ex-kdd-1/yourname/
+cd /arc/project/pr-kdd-1/yourname/
 #consume your envs, activate environments
 
 #run your code here
@@ -132,11 +132,11 @@ Pretty much the same thing except:
  
 #PBS -l walltime=1:00:00,select=1:ncpus=1:mem=2gb:gpus=20
 #PBS -N demo_gpu
-#PBS -A ex-kdd-1-gpu
+#PBS -A pr-kdd-1-gpu
 #PBS -m abe
 #PBS -M rtkushner@alumni.ubc.ca
-#PBS -o /scratch/ex-kdd-1/rt/kddlab_sockeye/output.txt
-#PBS -e /scratch/ex-kdd-1/rt/kddlab_sockeye/error.txt
+#PBS -o /scratch/pr-kdd-1/rt/kddlab_sockeye/output.txt
+#PBS -e /scratch/pr-kdd-1/rt/kddlab_sockeye/error.txt
  
 ################################################################################
  
@@ -146,7 +146,7 @@ module load gcc
 module load cuda
 module load python3
 
-cd /arc/project/ex-kdd-1/yourname/
+cd /arc/project/pr-kdd-1/yourname/
 #consume your envs, activate environments
 
 #run your code here
@@ -165,7 +165,7 @@ If mistaken is made or job unwanted :```qdel <jobid:12332144.pbsha> ```
 
 
 ```
-scp -r   mycwl@sockeye.arc.ubc.ca:/scratch/ex-kdd-1/myuserfolder/myexperimentalresults user@youmachine:~/myexperimentalresults
+scp -r   mycwl@sockeye.arc.ubc.ca:/scratch/pr-kdd-1/myuserfolder/myexperimentalresults user@youmachine:~/myexperimentalresults
 ```
 
 
