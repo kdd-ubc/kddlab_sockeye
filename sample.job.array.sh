@@ -15,7 +15,7 @@
 module load python3
 module load parallel
 
-cd /arc/project/ex-kdd-1/rt/kddlab_sockeye
+cd /arc/project/pr-kdd-1/rt/kddlab_sockeye
 
 #consume your envs, activate environments
 source testvenv/bin/activate
@@ -25,4 +25,4 @@ source testvenv/bin/activate
 python3 experiment_parser.py --outdir /scratch/ex-kdd-1/rt/kddlab_sockeye/ -it 10000 -i $PBS_ARRAY_INDEX
 
 # or with gnu-parallel
-# parallel "python3 experiment_parser.py --outdir /scratch/ex-kdd-1/rt/kddlab_sockeye/ -it 100 -i {1}" ::: $(seq  $PBS_ARRAY_INDEX $(($PBS_ARRAY_INDEX+10)))
+# parallel "python3 experiment_parser.py --outdir /scratch/pr-kdd-1/rt/kddlab_sockeye/ -it 100 -i {1}" ::: $(seq  $PBS_ARRAY_INDEX $(($PBS_ARRAY_INDEX+10)))
